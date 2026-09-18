@@ -2,10 +2,19 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 var health = 100
+signal died
 
 func take_damage(amount):
 	health -= amount
 	print("Player health: ", health)
+	
+	if health <= 0:
+		die()
+
+func die():
+	print("Player Died")
+	died.emit()
+	set_physics_process(false)
 
 func _ready():
 	take_damage(10)

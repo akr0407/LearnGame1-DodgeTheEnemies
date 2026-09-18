@@ -24,4 +24,8 @@ shape = SubResource("RectangleShape2D_hs3mr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2077131223]
 shape = SubResource("CircleShape2D_hs3mr")
 
+[node name="DamageTimer" type="Timer" parent="." unique_id=1571655926]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

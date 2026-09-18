@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 100
 
 var player
+var player_in_range = false
 
 func _ready() -> void:
 	var players = get_tree().get_nodes_in_group("player")
@@ -26,7 +27,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 	
 	if body.is_in_group("player"):
-		body.take_damage(10)
+		player_in_range = true
+		$DamageTimer.start()
 		
-	print("Something entered the enemy area")
-	print("Body: ", body.name)
+	#print("Something entered the enemy area")
+	#print("Body: ", body.name)
+
+
+func _on_damage_timer_timeout() -> void:
+	print("attack")
+	if player_in_range:
+		player.take_damage(10)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player_in_range = false
+		$DamageTimer.stop()
