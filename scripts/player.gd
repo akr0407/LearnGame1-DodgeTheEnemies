@@ -17,7 +17,7 @@ func die():
 	set_physics_process(false)
 
 func _ready():
-	take_damage(10)
+	pass
 	
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
