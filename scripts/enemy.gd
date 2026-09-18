@@ -19,3 +19,14 @@ func _physics_process(delta: float) -> void:
 		#print("Direction: ", direction, " | Velocity: ", velocity)
 		
 		move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body == self:
+		return
+	
+	if body.is_in_group("player"):
+		body.take_damage(10)
+		
+	print("Something entered the enemy area")
+	print("Body: ", body.name)
