@@ -4,16 +4,16 @@
 [ext_resource type="Script" uid="uid://7h1gaod2svcr" path="res://scripts/enemy.gd" id="1_md0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs3mr"]
-size = Vector2(128, 128)
+size = Vector2(72, 72)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hs3mr"]
-radius = 100.0
+radius = 60.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1950215036]
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1159474831]
-scale = Vector2(8.125, 8)
+scale = Vector2(5, 4.924)
 texture = ExtResource("1_7p1mj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=662864067]

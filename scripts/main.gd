@@ -5,6 +5,7 @@ extends Node2D
 @onready var game_over_panel = $UI/GameOverPanel
 @onready var survival_label = $UI/TimeLabel
 @onready var final_time_label = $UI/GameOverPanel/FinalTimeLabel
+@onready var high_score_label = $UI/HighScoreLabel
 
 var enemy_scene = preload("res://scenes/enemy.tscn")
 var spawn_interval = 3
@@ -29,6 +30,12 @@ func _process(delta: float) -> void:
 	
 	survival_time += delta
 	survival_label.text = "Time: " + str(int(survival_time))
+	
+	if int(survival_time) > GameData.high_score:
+		GameData.high_score = int(survival_time)
+		GameData.save_game()
+	
+	high_score_label.text = "High Score: " + str(int(GameData.high_score))
 	
 	difficulty_timer += delta
 	
