@@ -52,6 +52,8 @@ func _on_player_died() -> void:
 	print("Game Over")
 	final_time_label.text = "Survived: " + str(int(survival_time)) + " seconds"
 	game_over_panel.visible = true
+	
+	$EnemySpawner/SpawnTimer.stop()
 
 
 func _on_restart_button_pressed() -> void:

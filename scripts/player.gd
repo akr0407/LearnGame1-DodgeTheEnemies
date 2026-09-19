@@ -8,13 +8,22 @@ func take_damage(amount):
 	health -= amount
 	print("Player health: ", health)
 	
+	$HitSound.play()
+	$Sprite2D.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	$Sprite2D.modulate = Color.WHITE
+	
 	if health <= 0:
 		die()
 
 func die():
 	print("Player Died")
-	died.emit()
+	
 	set_physics_process(false)
+	$Sprite2D.visible = false
+	$DamageSound.play()
+	
+	died.emit()
 
 func _ready():
 	pass
